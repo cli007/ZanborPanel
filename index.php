@@ -42,7 +42,7 @@ elseif ($text == '❌  انصراف' and $user['step'] == 'confirm_service') {
 	sendMessage($from_id, sprintf($texts['start'], $first_name), $start_key);
 }
 
-elseif ($text == '🛒 خرید سرویس') {
+elseif ($text == '🛍 خرید اشتراک') {
 	$servers = $sql->query("SELECT * FROM `panels` WHERE `status` = 'active'");
 	if ($servers->num_rows > 0) {
 		step('buy_service');
@@ -134,7 +134,7 @@ elseif (strpos($user['step'], 'send_copen-') !== false) {
     }
 }
 
-elseif($user['step'] == 'confirm_service' and $text == '☑️ ایجاد سرویس'){
+elseif($user['step'] == 'confirm_service' and $text == '☑️ ایجاد اشتراک'){
     step('none');
     sendMessage($from_id, $texts['create_service_proccess']);
     # ---------------- delete extra files ---------------- #
@@ -1475,7 +1475,7 @@ if ($from_id == $config['dev'] or in_array($from_id, $admins)) {
     elseif (strpos($data, 'set_example_link_sanayi') !== false) {
         $code = explode('-', $data)[1];
         step('set_example_link_sanayi-'.$code);
-        sendMessage($from_id, "✏️ نمونه سرویس خود را با توجه به توضیحات زیر ارسال کنید :\n\n▫️به جای جاهای متغیر هر قسمت در لینک سرویس ارسالی مقدار s1 و %s2 و ...% رو جایگزین کنید.\n\nبرای مثال لینک دریافتی :\n\n<code>vless://a8eff4a8-226d3343bbf-9e9d-a35f362c4cb4@1.1.1.1:2053?security=reality&type=grpc&host=&headerType=&serviceName=xyz&sni=cdn.discordapp.com&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sid=&spx=#ZanborPAnel</code>\n\nو لینک ارسالی شما به ربات باید به شرح زیر باشد ( نمونه ) :\n\n<code>vless://%s1@%s2?security=reality&type=grpc&host=&headerType=&serviceName=xyz&sni=cdn.discordapp.com&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sid=&spx=#%s3</code>\n\n⚠️ به صورت صحیح ارسال کنید در غیر این صورت ربات موقع خرید سرویس با خطا مواجه خواهد شد", $back_panel);
+        sendMessage($from_id, "✏️ نمونه سرویس خود را با توجه به توضیحات زیر ارسال کنید :\n\n▫️به جای جاهای متغیر هر قسمت در لینک سرویس ارسالی مقدار s1 و %s2 و ...% رو جایگزین کنید.\n\nبرای مثال لینک دریافتی :\n\n<code>vless://a8eff4a8-226d3343bbf-9e9d-a35f362c4cb4@1.1.1.1:2053?security=reality&type=grpc&host=&headerType=&serviceName=xyz&sni=cdn.discordapp.com&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sid=&spx=#ZanborPAnel</code>\n\nو لینک ارسالی شما به ربات باید به شرح زیر باشد ( نمونه ) :\n\n<code>vless://%s1@%s2?security=reality&type=grpc&host=&headerType=&serviceName=xyz&sni=cdn.discordapp.com&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sid=&spx=#%s3</code>\n\n⚠️ به صورت صحیح ارسال کنید در غیر این صورت ربات موقع خرید اشتراک با خطا مواجه خواهد شد", $back_panel);
     }
     
     elseif (strpos($user['step'], 'set_example_link_sanayi') !== false) {
